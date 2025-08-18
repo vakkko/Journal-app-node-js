@@ -1,0 +1,42 @@
+main {
+  margin: 3rem 21rem 0;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+.post-container {
+  margin-top: 2rem;
+}
+
+label {
+  font-size: 1.8rem;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 1.5rem;
+  border: none;
+  outline: 2px solid #c9ddf4;
+  border-radius: 10px;
+  font-size: 1.5rem;
+}
+
+#title {
+  margin-bottom: 1rem;
+}
+
+#post {
+  height: 16rem;
+}
+
+.btn-submit {
+  color: white;
+  background-color: #0b7ff9;
+  font-size: 1.6rem;
+  padding: 10px 17px;
+  border-radius: 5px;
+  margin-top: 4rem;
+}

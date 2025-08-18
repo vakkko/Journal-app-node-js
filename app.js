@@ -14,6 +14,10 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/journal", (req, res) => {
+  res.render("journal");
+});
+
 app.listen(5000, () => {
   console.log("server is running!");
 });
