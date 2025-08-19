@@ -22,5 +22,13 @@
         </button>
       </div>
     </header>
+    <main>
+      <% if(post.length === 0) { %>
+      <p>No posts yet!</p>
+      <% } else { %> <% post.map(pst => { %>
+      <p>Title: <%= pst.title %></p>
+      <p>Post: <%= pst.post %></p>
+      <% }) %> <% } %>
+    </main>
   </body>
 </html>

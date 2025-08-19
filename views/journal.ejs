@@ -11,13 +11,17 @@
     <header><%- include("../partials/nav.ejs") %></header>
     <main>
       <h2>Compose</h2>
-      <div class="post-container">
+      <form
+        action="http://localhost:5000/journal"
+        method="post"
+        class="post-container"
+      >
         <label for="title">Title</label><br />
         <textarea id="title" name="title"></textarea><br />
         <label for="post">Post</label><br />
         <textarea id="post" name="post"></textarea>
-        <button class="btn-submit">Publish</button>
-      </div>
+        <button type="submit" class="btn-submit">Publish</button>
+      </form>
     </main>
   </body>
 </html>
