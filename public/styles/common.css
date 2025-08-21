@@ -20,6 +20,7 @@ button {
   border: none;
   font-family: "Arial", sans-serif;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .heading {
