@@ -30,7 +30,7 @@
         <p class="title"><%= pst.title %></p>
         <div>
           <p class="post"><%= pst.post %></p>
-          <button class="btn-delete">
+          <button onclick="deletePost('<%= pst.id %>')" class="btn-delete">
             <?xml version="1.0" encoding="utf-8"?>
             <svg
               width="20px"
@@ -76,4 +76,14 @@
       <% }) %> <% } %>
     </main>
   </body>
+  <script>
+    async function deletePost(id) {
+      const res = await fetch("/delete-post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      window.location.reload();
+    }
+  </script>
 </html>
