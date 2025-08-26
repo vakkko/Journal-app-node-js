@@ -29,7 +29,13 @@ app.post("/journal", (req, res) => {
   res.redirect("/");
 });
 
-app.post("/delete-post", (req, res) => {
+app.get("/posts/:id", (req, res) => {
+  const postid = Number(req.params.id);
+  const post = posts.find((pst) => pst.id === postid);
+  res.render("post", { post });
+});
+
+app.delete("/delete-post", (req, res) => {
   const postId = Number(req.body.id);
   for (let i = 0; i < posts.length; i++) {
     if (posts[i].id === postId) {
@@ -37,6 +43,7 @@ app.post("/delete-post", (req, res) => {
       break;
     }
   }
+  res.json({ success: true });
 });
 
 app.listen(5000, () => {

@@ -1,0 +1,28 @@
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.post-container > div {
+  position: relative;
+}
+
+.btn-delete {
+  position: absolute;
+  top: -3rem;
+  right: 0rem;
+}
+
+.btn-delete > svg {
+  stroke: #000000;
+}
+
+.post {
+  height: 300px;
+}
+
+/* ACTIVE */
+.btn-delete:hover > svg {
+  stroke: #ff0000;
+}
