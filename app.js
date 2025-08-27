@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
+import delePost from "./utils/postUtils.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -37,12 +38,7 @@ app.get("/posts/:id", (req, res) => {
 
 app.delete("/delete-post", (req, res) => {
   const postId = Number(req.body.id);
-  for (let i = 0; i < posts.length; i++) {
-    if (posts[i].id === postId) {
-      posts.splice(i, 1);
-      break;
-    }
-  }
+  delePost(posts, postId);
   res.json({ success: true });
 });
 
