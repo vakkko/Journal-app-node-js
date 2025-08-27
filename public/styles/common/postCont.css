@@ -13,12 +13,10 @@
 }
 
 .title {
-  font-size: 2.4rem;
   font-weight: 700;
 }
 
 .post {
-  font-size: 1.5rem;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;

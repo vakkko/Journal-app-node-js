@@ -13,6 +13,14 @@ main {
   align-items: flex-start;
 }
 
+.post {
+  font-size: 1.5rem;
+}
+
+.title {
+  font-size: 2.4rem;
+}
+
 .greeting > h2 {
   font-size: 2.4rem;
 }

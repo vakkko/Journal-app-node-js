@@ -14,15 +14,40 @@ main {
   right: 0rem;
 }
 
+.btn-edit {
+  position: absolute;
+  top: -3rem;
+  right: 3rem;
+}
+
+.btn-edit > svg {
+  fill: "#000000";
+}
+
 .btn-delete > svg {
   stroke: #000000;
 }
 
+.title {
+  font-size: 2.8rem;
+  padding-left: 3rem;
+}
+
 .post {
+  font-size: 1.8rem;
   height: 300px;
+  width: 100%;
 }
 
 /* ACTIVE */
 .btn-delete:hover > svg {
   stroke: #ff0000;
+}
+
+.btn-edit:hover {
+  cursor: pointer;
+}
+
+.btn-edit:hover > svg {
+  fill: #a29bfe;
 }
