@@ -39,6 +39,20 @@ main {
   width: 100%;
 }
 
+.btn-save {
+  font-size: 2rem;
+  color: white;
+  background-color: #007bff;
+  align-self: flex-end;
+  padding: 10px 15px;
+  border-radius: 20px;
+  display: none;
+}
+
+.btn-save.show {
+  display: block;
+}
+
 /* ACTIVE */
 .btn-delete:hover > svg {
   stroke: #ff0000;

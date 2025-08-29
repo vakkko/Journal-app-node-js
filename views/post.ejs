@@ -16,7 +16,10 @@
         <p class="title"><%= post.title %></p>
         <div>
           <textarea class="post"><%= post.post %></textarea>
-          <button onclick="deletePost('<%= post.id %>')" class="btn-delete">
+          <button
+            onclick="handleDeleteClick('<%= post.id %>')"
+            class="btn-delete"
+          >
             <?xml version="1.0" encoding="utf-8"?>
             <svg
               width="20px"
@@ -57,7 +60,7 @@
               />
             </svg>
           </button>
-          <button onclick="editPost()" class="btn-edit">
+          <button onclick="handleEditClick()" class="btn-edit">
             <?xml version="1.0" encoding="iso-8859-1"?>
             <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
             <svg
@@ -91,6 +94,7 @@
             </svg>
           </button>
         </div>
+        <button onClick="handleSaveClick()" class="btn-save">save</button>
       </div>
     </main>
   </body>

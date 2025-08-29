@@ -1,4 +1,7 @@
-async function deletePost(id) {
+const saveBtn = document.querySelector(".btn-save");
+const post = document.querySelector(".post");
+
+async function handleDeleteClick(id) {
   const res = await fetch("/delete-post", {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
@@ -10,10 +13,14 @@ async function deletePost(id) {
     window.location.href = "/";
   }
 }
-function editPost() {
-  const post = document.querySelector(".post");
-  const length = post.value.length;
 
+function handleEditClick() {
+  const length = post.value.length;
   post.focus();
   post.setSelectionRange(length, length);
+  saveBtn.classList.toggle("show");
+}
+
+function handleSaveClick() {
+  saveBtn.classList.remove("show");
 }
