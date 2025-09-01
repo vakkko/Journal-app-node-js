@@ -3,6 +3,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import delePost from "./utils/postUtils.js";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -13,8 +15,14 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+dotenv.config();
 
 const posts = [];
+
+mongoose
+  .connect(process.env.API_URL)
+  .then(() => console.log("MongoDb connected"))
+  .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
   res.render("index", { post: posts });
@@ -42,6 +50,6 @@ app.delete("/delete-post", (req, res) => {
   res.json({ success: true });
 });
 
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
   console.log("server is running!");
 });
