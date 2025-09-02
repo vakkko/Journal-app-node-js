@@ -18,15 +18,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 dotenv.config();
 
-const posts = [];
-
 mongoose
   .connect(process.env.API_URL)
   .then(() => console.log("MongoDb connected"))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => {
-  res.render("index", { post: posts });
+app.get("/", async (req, res) => {
+  const data = await Journal.find();
+  res.render("index", { post: data });
 });
 
 app.get("/journal", (req, res) => {
@@ -36,20 +35,30 @@ app.get("/journal", (req, res) => {
 app.post("/journal", async (req, res) => {
   const { title, post } = req.body;
   try {
-    const newJournal = new Journal({
-      title: title,
-      post: post,
-    });
-    await newJournal.save();
-    res.redirect("/");
+    if (
+      !title ||
+      !post ||
+      title.trim().length === 0 ||
+      post.trim().length === 0
+    ) {
+      return res.status(400).send("Title and post are required.");
+    } else {
+      const newJournal = new Journal({
+        title: title,
+        post: post,
+      });
+      await newJournal.save();
+      res.redirect("/");
+    }
   } catch (err) {
     console.error(err);
   }
 });
 
-app.get("/posts/:id", (req, res) => {
-  const postid = Number(req.params.id);
-  const post = posts.find((pst) => pst.id === postid);
+app.get("/posts/:id", async (req, res) => {
+  const data = await Journal.find();
+  const postid = req.params.id;
+  const post = data.find((pst) => pst.id === postid);
   res.render("post", { post });
 });
 
