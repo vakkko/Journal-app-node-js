@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import delePost from "./utils/postUtils.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import Journal from "./model/model.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -32,10 +33,18 @@ app.get("/journal", (req, res) => {
   res.render("journal");
 });
 
-app.post("/journal", (req, res) => {
+app.post("/journal", async (req, res) => {
   const { title, post } = req.body;
-  posts.push({ title, post, id: Date.now() });
-  res.redirect("/");
+  try {
+    const newJournal = new Journal({
+      title: title,
+      post: post,
+    });
+    await newJournal.save();
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 app.get("/posts/:id", (req, res) => {
