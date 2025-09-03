@@ -94,6 +94,10 @@
             </svg>
           </button>
         </div>
+        <p class="date">
+          Date: <%= post.date.getDay() %>/<%= post.date.getMonth() %>/<%=
+          post.date.getFullYear() %>
+        </p>
         <button onClick="handleSaveClick()" class="btn-save">save</button>
       </div>
     </main>

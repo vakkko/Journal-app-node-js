@@ -11,6 +11,10 @@ const journalSchema = new Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Journal = mongoose.model("Journal", journalSchema);
