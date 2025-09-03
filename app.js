@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
-import delePost from "./utils/postUtils.js";
+import delePostById from "./utils/postUtils.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Journal from "./model/model.js";
@@ -62,9 +62,10 @@ app.get("/posts/:id", async (req, res) => {
   res.render("post", { post });
 });
 
-app.delete("/delete-post", (req, res) => {
-  const postId = Number(req.body.id);
-  delePost(posts, postId);
+app.delete("/delete-post", async (req, res) => {
+  const postId = req.body.id;
+  const data = await Journal.find();
+  delePostById(postId);
   res.json({ success: true });
 });
 

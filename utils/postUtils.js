@@ -1,10 +1,16 @@
-function delePost(posts, postId) {
-  for (let i = 0; i < posts.length; i++) {
-    if (posts[i].id === postId) {
-      posts.splice(i, 1);
-      break;
+import Journal from "../model/model.js";
+
+async function delePostById(postId) {
+  try {
+    const deleteUser = await Journal.findByIdAndDelete(postId);
+    if (!deleteUser) {
+      console.log("User not found with id", postId);
+      return null;
     }
+    console.log("User deleted successfully");
+  } catch (err) {
+    console.error("Error deleting user");
   }
 }
 
-export default delePost;
+export default delePostById;
